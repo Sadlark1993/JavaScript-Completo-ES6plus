@@ -1,0 +1,17 @@
+@import url("css/estilo.css");
+
+.azul{
+    background: blue;
+}
+
+.vermelho{
+    background: red;
+}
+
+.ativo{
+    background: tomato;
+}
+
+.texto-maior{
+    font-size: 150%;
+}
