@@ -1,1 +1,1 @@
-A JavaScript Course Repository
+# A JavaScript Course Repository
