@@ -126,3 +126,37 @@ console.log(li3);
 /* nao eh necessario passar todos os argumentos na hora do bind. Pode deixar pra passar na hora de 
 chamar a funcao/metodo */
 
+console.log('\n********Exercícios:********');
+
+// Retorne a soma total de caracteres dos
+// parágrafos acima utilizando reduce
+const section = document.querySelectorAll('section p');
+let totalC = Array.prototype.reduce.call(section, (acc, item) => {
+  acc += item.innerText.length;
+  return acc;
+},0);
+console.log(totalC);
+
+
+// Crie uma função que retorne novos elementos
+// html, com os seguintes parâmetros
+// tag, classe e conteudo.
+function criarElemento(tag, classe, cont){
+  const elemento = document.createElement(tag);
+  classe ? elemento.classList.add(classe) : null;
+  elemento.innerText = cont;
+  return elemento;
+}
+
+const conteudo = '\tLobo-cinzento (nome científico:Canis lupus) é uma espécie de mamífero canídeo do gênero Canis.';
+
+const elemento = criarElemento('div', 'texto', conteudo);
+console.log(elemento);
+
+// Crie uma nova função utilizando a anterior como base
+// essa nova função deverá sempre criar h1 com a
+// classe titulo. Porém o parâmetro conteudo continuará dinâmico
+
+const criarTitulo = criarElemento.bind(null,'h1', 'titulo');
+const titulo = criarTitulo('Os Cachorros do Jorge');
+console.log(titulo);
