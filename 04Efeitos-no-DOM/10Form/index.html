@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+</head>
+
+
+<body>
+  <style>
+    label,
+    .texto {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      border: 2px solid black;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    .texto {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .invalido {
+      border-color: red;
+    }
+  </style>
+
+  <form name="contato" id="contato">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" required>
+    <span class="erro"></span>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    <span class="erro"></span>
+    <label for="mensagem">Mensagem</label>
+    <textarea name="mensagem" id="mensagem"></textarea>
+    <!--     
+    <select name="cores" id="cores">
+      <option value="#E2F4FE">Azul</option>
+      <option value="#FBDCE4">Rosa</option>
+    </select>
+    <input type="color">
+    <input type="date">
+    <input type="number">
+    <input type="range"> 
+    -->
+  </form>
+  <span class="texto"></span>
+
+  <script>
+    const contato = document.forms.contato;
+    const texto = document.querySelector('.texto');
+    const dados = {};
+
+
+    function handleChange(event) {
+      dados[event.target.name] = event.target.value;;
+      /*    
+      document.body.style.backgroundColor = event.target.value;
+      if (!event.target.checkValidity()) {
+        event.target.classList.add('invalido');
+        contato.nome.setCustomValidity('Coloca o nome aí o FDP!!');
+        event.target.nextElementSibling.innerText = event.target.validationMessage;
+      } 
+      */
+      //texto.innerText = event.target.value
+    }
+
+    const eventos = ['keyup', 'change'];
+    eventos.forEach((evento) => {
+      contato.addEventListener(evento, handleChange);
+    });
+    //explicou radio button e checkbox
+  </script>
+</body>
+
+</html>
