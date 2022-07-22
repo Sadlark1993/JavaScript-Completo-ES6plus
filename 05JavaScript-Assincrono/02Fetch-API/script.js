@@ -72,7 +72,7 @@ fetch('./imagem.jpg')
 Ao utilizarmos os métodos acima, text, json e blob, a resposta é modificada. Por isso existe o método clone, caso você necessite transformar uma resposta em diferentes valores.
  */
 
-fetch('https://viacep.com.br/ws/01001000/json/')
+fetch('https://viacep.com.br/ws/78068560/json/')
 .then(response => {
   const cloneResponse = response.clone();
   response.json().then(json => {
@@ -121,3 +121,79 @@ fetch('https://viacep.com.br/ws/01001000/json/')
 // cors: feito em url body pode estar disponível
 // error: erro de conexão
 // opaque: no-cors, não permite acesso de outros sites
+
+
+console.log('\n********Exercicios:********');
+
+// Utilizando a API https://viacep.com.br/ws/${CEP}/json/
+// crie um formulário onde o usuário pode digitar o cep
+// e o endereço completo é retornado ao clicar em buscar
+
+const botao = document.querySelector('.btn');
+botao.addEventListener('click', handleClick);
+
+function handleClick(event){
+  event.preventDefault();
+  const formInput = document.forms.formCep.cep.value;
+
+  fetch(`https://viacep.com.br/ws/${formInput}/json/`)
+  .then((response) =>{
+
+    return response.json();
+
+  })
+  .then((response)=>{
+
+      let end = `\nLogradouro: ${response.logradouro}\nComplemento: ${response.complemento}\nBairro: ${response.bairro}\nCidade: ${response.localidade}\nUF: ${response.uf}`;
+      //console.log(end);
+
+      const divEnd = document.querySelector('div.endereco');
+      divEnd.innerText = end;
+   
+  })
+  .catch((rejeicao)=>{
+    const divEnd = document.querySelector('div.endereco');
+      divEnd.innerText = '\nColoca o treco certo, gay.';
+  })
+}
+
+
+// Utilizando a API https://blockchain.info/ticker
+// retorne no DOM o valor de compra da bitcoin and reais.
+// atualize este valor a cada 30s
+
+handleCripto();
+setInterval(()=>{
+  handleCripto();
+},30000);
+
+function handleCripto(){
+  fetch('https://blockchain.info/ticker')
+  .then((res)=>{
+    return res.json();
+  }).then((res)=>{
+    cripto = document.querySelector('.precoCripto');
+    cripto.innerText = `Preço do Bitcoin: R$${res.BRL.last}`;
+    //console.log(res.BRL.last);
+  });
+}
+
+
+// Utilizando a API https://api.chucknorris.io/jokes/random
+// retorne uma piada randomica do chucknorris, toda vez que
+// clicar em próxima
+
+chuckBtn = document.querySelector('.chuck button');
+chuckBtn.addEventListener('click', handleChuck);
+
+handleChuck();
+function handleChuck(){
+  fetch('https://api.chucknorris.io/jokes/random')
+  .then((res)=>{
+    return res.json();
+  })
+  .then((res)=>{
+    piada = document.querySelector('.chuck p');
+    piada.innerText = res.value;
+  })
+}
