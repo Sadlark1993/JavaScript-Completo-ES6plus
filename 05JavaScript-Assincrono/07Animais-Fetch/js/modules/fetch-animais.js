@@ -1,8 +1,9 @@
 import initAnimaNumeros from "./anima-numeros.js";
 
 export default function initFetchAnimais(){
-    try{
-        async function fetchAnimais(url){
+
+    async function fetchAnimais(url){
+        try{
             const animaisResponse = await fetch(url);
             const animaisJSON = await animaisResponse.json();
         
@@ -12,10 +13,11 @@ export default function initFetchAnimais(){
                 numerosGrid.appendChild(div);
             });
             initAnimaNumeros();
+        }catch(error){
+            console.log(error);
         }
-    }catch(error){
-        console.log(error);
     }
+   
     
     function createAnimal(animal){
         const div = document.createElement('div');
