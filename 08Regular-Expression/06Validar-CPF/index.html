@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar CPF</title>
+</head>
+<body>
+    <h1>Validar CPF</h1>
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 2</li>
+        <li>item 4</li>
+    </ul>
+
+    <button>Botao</button>
+
+    <style>
+        .formulario{
+            margin-top: 20px;
+        }
+
+        .formulario input {
+            display: block;
+            margin-bottom:10px;
+            width: 100%;
+            padding: 5px;
+            border: 2px solid black;
+            font-size: 1em;
+            box-sizing: border-box;
+            max-width: 400px;
+        }
+
+        input::placeholder{
+            color: rgba(0,0,0,.2);
+        }
+
+        label{
+            display: block;
+            font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+        }
+        #erro{
+            color: red;
+            display: none;
+            font-size:0.75em;
+            font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+        }
+    </style>
+    <form class="formulario" action="">
+        <label for="cpf">CPF</label>
+        <span id="erro">CPF Inválido!</span>
+        <input type="text" name="cpf" id="cpf" placeholder="XXX.XXX.XXX-XX">
+        <label for="emal">Email</label>
+        <input type="text" name="email" id="email">
+    </form>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
