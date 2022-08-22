@@ -1,8 +1,0 @@
-cd
-ls
-ls all
-touch <nome do arquivo> //cria novo arquivo
-mkdir <nome da nova pasta>
-
-rm <nome do arquivo> //remover
-rm -r <nome da pasta>

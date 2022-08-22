@@ -1,7 +1,6 @@
 {
   "name": "1003-eslint",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,6 @@
   },
   "dependencies": {
     "eslint-config-prettier": "^6.11.0"
-  }
+  },
+  "description": ""
 }
