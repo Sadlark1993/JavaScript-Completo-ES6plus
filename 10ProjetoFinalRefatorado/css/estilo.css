@@ -312,7 +312,7 @@ de tela (acessibilidade). */
 .js [data-scroll="anima"] {
   opacity: 0;
   transform: translate3d(-30px, 0, 0);
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 [data-scroll="anima"].ativo {
