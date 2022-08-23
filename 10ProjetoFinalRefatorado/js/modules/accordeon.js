@@ -1,20 +1,23 @@
 //Menu Accordeon
-export default function accordeon() {
-  const accordeonMenu = document.querySelectorAll('[data-anima="accordeon"] dt');
+export default class accordeon {
+  constructor(link){
+    this.accordeonMenu = document.querySelectorAll(link)
+  }
 
-  function callback() {
-    this.classList.toggle("ativo");
-    this.nextElementSibling.classList.toggle("ativo");
+  callback(item) {
+    item.classList.toggle("ativo");
+    item.nextElementSibling.classList.toggle("ativo");
   } 
 
-  if (accordeonMenu.length) {
-    accordeonMenu[0].classList.add("ativo");
-    accordeonMenu[0].nextElementSibling.classList.add("ativo");
+  
 
+  init(){ //iniciar execucao da classe
+    if (this.accordeonMenu.length) {
+      this.callback(this.accordeonMenu[0]);
 
-
-    accordeonMenu.forEach((item) => {
-      item.addEventListener("click", callback);
-    });
+      this.accordeonMenu.forEach((item) => {
+        item.addEventListener("click", ()=> this.callback(item));
+      });
+    }
   }
 } 

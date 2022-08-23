@@ -1,8 +1,9 @@
 'use strict'; //impede bad actions.
 
 import ScrollSuave from "./modules/scroll-suave.js";
+import Accordeon from "./modules/accordeon.js";
+
 import initAnimacaoScroll from "./modules/scroll-animacao.js";
-import accordeon from "./modules/accordeon.js";
 import initTabNav from "./modules/tab-nav.js";
 import initModal from "./modules/modal.js";
 import initTooltip from "./modules/tooltip.js"
@@ -16,8 +17,10 @@ import initFetchBitcoin from "./modules/fetch-bitcoin.js";
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
 
+const accordeon = new Accordeon('[data-anima="accordeon"] dt');
+accordeon.init();
+
 initAnimacaoScroll();
-accordeon();
 initTabNav();
 initModal();
 initTooltip();
