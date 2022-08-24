@@ -19,5 +19,6 @@ export default class accordeon {
         item.addEventListener("click", ()=> this.callback(item));
       });
     }
+    return this;
   }
 } 

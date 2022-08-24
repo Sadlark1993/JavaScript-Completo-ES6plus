@@ -29,5 +29,6 @@ export default class TabNav {
         });
       });
     }
+    return this;
   }
 }
