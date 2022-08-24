@@ -12,7 +12,6 @@ export default class ScrollSuave {
     }
     //define a classe como o this eterno desse metodo. Se nao fizer isso, o this passa ser o link q o chamou.
     this.scrollToSection = this.scrollToSection.bind(this);   //<<--- prestencao.
-    console.log(this);
   }
 
   scrollToSection(event) {
