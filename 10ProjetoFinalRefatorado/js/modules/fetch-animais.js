@@ -1,5 +1,10 @@
-import initAnimaNumeros from "./anima-numeros.js";
+import AnimaNumeros from "./anima-numeros.js";
 
+    /* 
+    Recupera os objetos de animaisApi.json, cria uma div com um h3 e um span para cada um desses objetos e a 
+    insere dentro do bloco (no index.html) cuja classe eh 'numeros-grid'. Depois ele inicia a execucao do 
+    metodo 'animaNumeros.init()'.
+    */
 export default function initFetchAnimais(){
 
     async function fetchAnimais(url){
@@ -12,7 +17,12 @@ export default function initFetchAnimais(){
                 const div = createAnimal(item);
                 numerosGrid.appendChild(div);
             });
-            initAnimaNumeros();
+            
+            /* argumentos: atributo do objeto do numero a ser incrementado; 
+                           classe da sessao onde as divs foram inseridas. 
+            */
+            const animaNumeros = new AnimaNumeros('[data-numero]','.numeros','ativo');
+            animaNumeros.init();
         }catch(error){
             console.log(error);
         }
