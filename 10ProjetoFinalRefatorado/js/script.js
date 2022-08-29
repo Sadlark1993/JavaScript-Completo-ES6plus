@@ -5,6 +5,7 @@ import Accordeon from "./modules/accordeon.js";
 import TabNav from "./modules/tab-nav.js";
 import Modal from "./modules/modal.js";
 import Tooltip from "./modules/tooltip.js";
+import FetchAnimais from "./modules/fetch-animais.js";
 
 import initAnimacaoScroll from "./modules/scroll-animacao.js";
 
@@ -13,7 +14,7 @@ import initAnimacaoScroll from "./modules/scroll-animacao.js";
 import initDropdown from "./modules/dropdown-menu.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initFuncionamento from "./modules/funcionamento.js";
-import initFetchAnimais from "./modules/fetch-animais.js";
+
 import initFetchBitcoin from "./modules/fetch-bitcoin.js";
 
 
@@ -32,9 +33,14 @@ modal.init();
 const tooltip = new Tooltip('[data-tooltip]');
 tooltip.init();
 
+/* args: Json file url, selecao do bloco onde as divs dos animais serao inseridas,
+ selecao da secao que vai aparecer,nome da classe que indica q a secao estah visivel*/
+const fetchAnimais = new FetchAnimais('./animaisApi.json', '.numeros-grid', '.numeros', 'ativo');
+fetchAnimais.init();
+
 initAnimacaoScroll();
 initDropdown();
 initMenuMobile();
 initFuncionamento();
-initFetchAnimais();
+
 initFetchBitcoin();
