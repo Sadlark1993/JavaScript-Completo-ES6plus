@@ -7,12 +7,11 @@ import Modal from "./modules/modal.js";
 import Tooltip from "./modules/tooltip.js";
 import FetchAnimais from "./modules/fetch-animais.js";
 import initFetchBitcoin from "./modules/fetch-bitcoin.js";
-
 import AnimacaoScroll from "./modules/scroll-animacao.js";
+import Dropdown from "./modules/dropdown-menu.js";
 
 
 
-import initDropdown from "./modules/dropdown-menu.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initFuncionamento from "./modules/funcionamento.js";
 
@@ -44,7 +43,10 @@ initFetchBitcoin('.btc-preco');
 const animacaoScroll = new AnimacaoScroll('[data-scroll="anima"]');
 animacaoScroll.init();
 
-initDropdown();
+/* args: chamada secao, nome da classe de ativacao do bloco, eventos a serem escutados  */
+const dropdown = new Dropdown('[data-dropdown]','ativo', 'click', 'touchstart');
+dropdown.init();
+
 initMenuMobile();
 initFuncionamento();
 

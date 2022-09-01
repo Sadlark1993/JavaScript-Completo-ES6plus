@@ -1,21 +1,39 @@
-
+'use strict';
 import outsideClick from "./outside-click.js";
 
-export default function initDropdown(){
-  const dropdownMenu = document.querySelectorAll('[data-dropdown]');
+export default class Dropdown {
+  constructor(dropdownMenu, ativo ,...events){
+    this.dropdownMenu = document.querySelectorAll(dropdownMenu);
+    
+    if(events === undefined){//adicionando eventos padrao.
+      this.events = ['click', 'touchstart'];
+    }else{
+      this.events = events; //eh um array de string dos eventos a serem escutados.
+    }
 
-  dropdownMenu.forEach((menu)=>{
-    ['click', 'touchstart'].forEach((item)=>{
-      menu.addEventListener(item, handleClick);
-    });
-  });
+    this.ativo = ativo;
+    //dando o bind
+    this.handleClick = this.handleClick.bind(this);
+  }
   
-  function handleClick(event){
+  handleClick(event){
+    const element = event.currentTarget;
     event.preventDefault();
-    this.classList.add('ativo');
-    outsideClick(this, ['click', 'touchstart'], ()=>{
-      this.classList.remove('ativo');
+    element.classList.add(this.ativo);
+    outsideClick(element, this.events, ()=>{
+      element.classList.remove(this.ativo);
     });
+  }
+
+  init(){
+    if(this.dropdownMenu.length){
+      this.dropdownMenu.forEach((menu)=>{
+        this.events.forEach((item)=>{
+          menu.addEventListener(item, this.handleClick);
+        });
+      });
+      return this;
+    }
   }
   
 }
