@@ -1,24 +1,52 @@
 //Animacao ao Scroll
-export default function initAnimacaoScroll() {
-  const sections = document.querySelectorAll('[data-scroll="anima"]');
+import debounce from './debounce-function.js';
+export default class AnimacaoScroll {
+  constructor(sections){
+    this.sections = document.querySelectorAll(sections);
+    //pegar 60% da altura da tela
+    this.window60 = window.innerHeight*0.6;
 
-  //pegar 60% da altura da tela
-  const window60 = window.innerHeight * 0.6;
-  function animaScroll() {
-    sections.forEach((section) => {
-      //pega a distanccia do topo da secao ao topo da tela
-      const sectionTop = section.getBoundingClientRect().top;
+    //setar o 'this' como o objeto da classe.
+    /* colocar debounce na funcao para ela nao ativar centenas de vezes por segundo 
+    quando o usuario der scroll */
+    this.checkDistance = debounce(this.checkDistance.bind(this), 50);
+  }
 
-      //valor booleano que determinara se a secao vai estar visivel
-      const isSectionVisible = sectionTop - window60 < 0;
-
-      if (isSectionVisible) section.classList.add("ativo");
-      else if(section.classList.contains('ativo')) section.classList.remove("ativo");
+  /* Pega a distancia de cada item em relacao ao topo do site */
+  getDistance(){
+    this.distance = [...this.sections].map((section)=>{
+      const offset = section.offsetTop;
+      return {
+        element: section,
+        offset: Math.floor(offset - this.window60),
+      };
     });
   }
 
-  if (sections.length) {
-    animaScroll();
-    window.addEventListener("scroll", animaScroll);
+  /* dependendo da distancia de de cada objeto ao topo do site
+  comparado ao scroll, esse metodo vai adicionar ou remover
+  a classe 'ativo' dele.  */
+  checkDistance(){
+    this.distance.forEach((item)=>{
+      if(window.pageYOffset > item.offset){
+        item.element.classList.add('ativo');
+      }else if(item.element.classList.contains('ativo')){
+        item.element.classList.remove('ativo');
+      }
+    });
+  }
+
+  init(){
+    if (this.sections.length) {
+      this.getDistance();
+      this.checkDistance();
+      window.addEventListener("scroll", this.checkDistance);
+    }
+    return this;
+  }
+
+  // Remove o event de scroll
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
   }
 }
