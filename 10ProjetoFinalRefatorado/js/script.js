@@ -12,7 +12,7 @@ import Dropdown from "./modules/dropdown-menu.js";
 
 
 
-import initMenuMobile from "./modules/menu-mobile.js";
+import MenuMobile from "./modules/menu-mobile.js";
 import initFuncionamento from "./modules/funcionamento.js";
 
 
@@ -47,7 +47,12 @@ animacaoScroll.init();
 const dropdown = new Dropdown('[data-dropdown]','ativo', 'click', 'touchstart');
 dropdown.init();
 
-initMenuMobile();
+/* args: chamada do botao, chamada da lista que vai surgir, classe de ativacao do bloco,
+eventos de ativacao do bloco*/
+const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', 'active', 'click', 'touchstart');
+menuMobile.init();
+
+
 initFuncionamento();
 
 
