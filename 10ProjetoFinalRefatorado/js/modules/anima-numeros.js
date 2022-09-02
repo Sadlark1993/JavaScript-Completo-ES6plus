@@ -20,6 +20,7 @@ export default class AnimaNumeros{
       //Observar a secao com a classe 'secaoNumeros', quando a classe 'ativo' aparecer nela, ele inicia a execucao da animacao.
       this.observer.observe(this.observerTarget, {attributes: true});
     }
+    return this;
   }
 
   /* 

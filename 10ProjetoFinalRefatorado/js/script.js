@@ -9,11 +9,8 @@ import FetchAnimais from "./modules/fetch-animais.js";
 import initFetchBitcoin from "./modules/fetch-bitcoin.js";
 import AnimacaoScroll from "./modules/scroll-animacao.js";
 import Dropdown from "./modules/dropdown-menu.js";
-
-
-
 import MenuMobile from "./modules/menu-mobile.js";
-import initFuncionamento from "./modules/funcionamento.js";
+import Funcionamento from "./modules/funcionamento.js";
 
 
 
@@ -52,7 +49,10 @@ eventos de ativacao do bloco*/
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', 'active', 'click', 'touchstart');
 menuMobile.init();
 
+/* args: chamda do bloco onde vai ficar a classe de ativacao, nome das classes que indicam
+se esta aberto ou fechado, respectivamente. */
+const funcionamento = new Funcionamento('[data-semana]', 'aberto', 'fechado');
+funcionamento.init();
 
-initFuncionamento();
 
 
