@@ -51,3 +51,10 @@
   color: white;
 }
 
+@media (max-width: 700px){
+  [data-dropdown] .dropdown-menu{
+    display: block;
+    animation: show-up 0.3s forwards;
+  }
+}
+
