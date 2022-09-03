@@ -11,6 +11,7 @@ import AnimacaoScroll from "./modules/scroll-animacao.js";
 import Dropdown from "./modules/dropdown-menu.js";
 import MenuMobile from "./modules/menu-mobile.js";
 import Funcionamento from "./modules/funcionamento.js";
+import SlideNav from './modules/slide.js';
 
 
 
@@ -54,5 +55,5 @@ se esta aberto ou fechado, respectivamente. */
 const funcionamento = new Funcionamento('[data-semana]', 'aberto', 'fechado');
 funcionamento.init();
 
-
-
+const slide = new SlideNav('.slide', '.slide-wrapper', '.prev', '.next', '.custom-control');
+slide.init();

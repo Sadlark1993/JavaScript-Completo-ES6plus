@@ -1,0 +1,118 @@
+.galeria{
+    grid-column: 1/-1;
+}
+
+.galeria .slide-wrapper{
+    grid-column: 1/-1;
+}
+
+.galeria .custom-control{
+    grid-column: 1/-1;
+}
+
+.slide-wrapper{
+    overflow: hidden;
+}
+
+.slide{
+    display: flex;
+}
+
+.slide:hover{
+    will-change: transform; /* informa ao navegador o que vai mudar. Melhora a performance. */
+}
+
+.slide li{
+    flex-shrink: 0;
+    width: 80vw;        /* 80% da tela */
+    max-width: 800px;
+    margin: 0 20px;
+
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    opacity: 0.8;
+    transform: scale(.8);
+    transition: .4s;
+}
+
+.slide li.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
+ /* isso munda a posicao do bloco. Eixo x, eixo y, eixo z. */
+/* .slide{
+    transform: translate3d(-3114px, 0px, 0px);
+} */
+
+[data-control="slide"]{
+    display: flex;
+    justify-content: center;
+}
+
+[data-control="slide"] li a{
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: #FB5;
+    border-radius: 50%;
+    overflow: hidden;
+    text-indent: -999px;
+    margin: 5px;
+}
+
+[data-control="slide"] li a.active, [data-control="slide"] li a:hover{
+    background: #E54;
+}
+
+.custom-control{
+    display: flex;
+    justify-content: center;;
+    flex-wrap: wrap;
+}
+
+.custom-control li img{
+    opacity: 0.8;
+    transform: scale(0.8);
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin: 2px;
+    box-shadow: 0 2px, 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    cursor:pointer;
+}
+
+.custom-control li img:hover, .custom-control li img.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.arrow-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.arrow-buttons button{
+    border-radius: 5px;
+    background: #FB5 url('../img/arrow.svg') center center no-repeat;
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    border: none;
+    transform: scale(1);
+}
+
+.arrow-buttons button.next:hover{
+    transform: scale(1.3);
+}
+
+.arrow-buttons button.prev{
+    transform: rotate(180deg);
+}
+
+.arrow-buttons button.prev:hover{
+    transform: rotate(180deg) scale(1.3);
+}
